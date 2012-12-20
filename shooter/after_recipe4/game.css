@@ -1,0 +1,14 @@
+.enemy{
+  color:red;
+  background-color: black;
+  font-size:24px;
+  border:1px solid red; 
+  text-align:center;
+}
+#player{
+  color:white;
+  background-color:black; 
+  font-size:24px;
+  border: 1px solid white;
+  text-align:center;
+}

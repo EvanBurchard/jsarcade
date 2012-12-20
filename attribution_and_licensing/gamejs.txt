@@ -1,0 +1,4 @@
+https://github.com/oberhamsi/gamejs
+
+Simon Oberhammer <simon@nekapuzer.at>
+MIT License: http://opensource.org/licenses/mit-license.php

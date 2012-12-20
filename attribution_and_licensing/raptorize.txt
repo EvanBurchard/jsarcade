@@ -1,0 +1,5 @@
+http://www.zurb.com/playground/jquery-raptorize
+
+Copyright ZURB, freely available for distribution under the MIT license.
+
+Raptor Assets: Phil Coffman and Noah Stokes

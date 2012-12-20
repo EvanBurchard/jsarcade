@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Interactive Fiction</title>
+    <link href="main.css" rel="stylesheet" />
+</head>
+
+<body>
+<div id="impress">
+    <div id="1" class="step slide">
+        <q>You're on the first slide (page).  The down and right arrow keys will take you to the next page. The left and up arrow keys will take you back. </q>
+    </div>
+    <div id="2" class="step slide">
+        <q>You can also use the spacebar instead of the right or down key to go to the next page.</q>
+    </div>
+    <div id="3" class="step slide">
+        <q>Now you're on the last page.  Right will take you back to the beginning.</q>
+    </div>
+</div>
+
+<script src="impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>

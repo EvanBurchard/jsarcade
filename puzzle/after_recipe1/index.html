@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe: Drawing a square</title>
+    <script src="easel.js"></script>
+    <script type="text/javascript">
+      var canvas;
+      var stage;
+      function init() {
+        canvas = document.getElementById('myCanvas');
+        stage = new Stage(canvas);
+        var square = drawSquare();
+        stage.addChild(square);
+        stage.update();
+      }
+      function drawSquare() {
+        var shape = new Shape();
+        var graphics = shape.graphics;
+        var color = randomColor();
+        graphics.setStrokeStyle(5);
+        graphics.beginStroke(Graphics.getRGB(20, 20, 20));
+        graphics.beginFill(color);
+        graphics.rect(5, 5, 70, 70);
+        return shape;
+      }
+      function randomColor(){
+        var color = Math.floor(Math.random()*255);
+        var color2 = Math.floor(Math.random()*255);
+        var color3 = Math.floor(Math.random()*255);
+        return Graphics.getRGB(color, color2, color3)
+      }
+    </script>
+</head>
+<body onload="init()">
+  <canvas id="myCanvas" width="960" height="400"></canvas>
+</body>
+</html>

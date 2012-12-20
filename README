@@ -1,0 +1,12 @@
+These are the source files for The Web Game Developer's Cookbook:
+www.amazon.com/The-Web-Game-Developers-Cookbook/dp/0321898389
+
+The games can be played and hacked on without the book, but they may not make as much sense without having that context.  In addition to explaining every line of code, the book has terminology, points to resources, covers patterns in JavaScript, and is even kind of funny in places.  
+
+A note for the pirates: If you end up reading the book via a pirated PDF download somewhere, I can't stop you and I still genuinely hope that you get something out of it.  I know you're real people too, and some of you might genuinely not have the cash.  Under normal ciricumstances, I'd say "it's totally fine," but the book is Pearson's property as much as mine, so I can't say that.  In providing the code and sprites in the games, I am giving away as much as I legally can for free.  I think that the skills taught inside are highly valuable.  If this is your first step to a career as a game developer, that could be worth anywhere from around 2,500 times (normal salaried folk) to 2.5 million times (absurdly lucky and absurdly smart folk) the price of the book.  Granted this book wouldn't come close to being wholely responsible for your success, but for whatever part it does play, I think the price is fair.  If you're just making games for fun, and if the standard unit of fun dollars is the cost of one night out for two people going to dinner & seeing a movie, this book costs approximately one unit of fun dollars, which I also think is fair.
+
+Let me know if you have any questions about anything with an email to: evan.burchard+jsarcade@gmail.com
+
+As far as licensing, the games can operate under whatever license the packages used within will allow.  Do whatever you want within those restrictions.  None of the code I wrote carries any restrictions beyond respecting those licenses.
+
+All of the sprites used in the game were drawn by Evan Burchard.  As with the code, feel free to hack on them.  Give Evan attribution by pointing here or at the amazon link if you're feeling charitable.

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe: Drawing a square</title>
+    <script src="easel.js"></script>
+    <script type="text/javascript">
+      var canvas;
+      var stage;
+      var placementArray = []; 
+      var tileClicked;
+      var timeAllowable;
+      var totalMatchesPossible;
+      var matchesFound;
+      var txt;
+      var matchesFoundText;
+      var tileHeight = 30;
+      var tileWidth = 45;
+      var border = 1;
+      var globalPadding = 10;
+      var margin = 10;
+      var padding = 5;
+      var textTiles;
+      var flashcards = [  
+        ["a", "\u3042"],["i", "\u3044"],["u", "\u3046"],["e", "\u3048"],["o", "\u304A"],
+        ["ka", "\u304B"],["ki", "\u304D"],["ku", "\u304F"],["ke", "\u3051"],["ko", "\u3053"],
+        ["sa", "\u3055"],["shi", "\u3057"],["su", "\u3059"],["se", "\u305B"],["so", "\u305D"],
+        ["ta", "\u305F"],["chi", "\u3061"],["tsu","\u3064"],["te", "\u3066"], ["to", "\u3068"],
+        ["na", "\u306A"],["ni", "\u306B"],["nu", "\u306C"],["ne", "\u306D"],["no","\u306E"],
+        ["ha", "\u306F"],["hi", "\u3072"],["fu", "\u3075"],["he", "\u3078"],["ho", "\u307B"],
+        ["ma", "\u307E"],["mi", "\u307F"],["mu", "\u3080"],["me", "\u3081"],["mo", "\u3082"],
+        ["ya", "\u3084"],["yu", "\u3086"],["yo", "\u3088"],
+        ["ra", "\u3089"],["ri", "\u308A"],["ru", "\u308B"],["re", "\u308C"],["ro", "\u308D"], 
+        ["wa", "\u308F"], ["wo", "\u3092"], ["n", "\u3093"] 
+      ]; 
+      function init() {
+        canvas = document.getElementById('myCanvas');
+        stage = new Stage(canvas);
+        totalMatchesPossible = flashcards.length;
+        var numberOfTiles = totalMatchesPossible * 2;
+        matchesFound = 0;
+        var columns = 12;
+        timeAllowable = 500;
+        txt = new Text(timeAllowable, "30px Monospace", "#000");
+        txt.textBaseline = "top"; 
+        txt.x = 700;
+        txt.y = 0;
+        stage.addChild(txt);
+        textTiles = [];
+        matchesFoundText = new Text(matchesFound+"/"+totalMatchesPossible, "30px Monospace", "#000");
+        matchesFoundText.textBaseline = "top";
+        matchesFoundText.x = 700;
+        matchesFoundText.y = 40;
+        stage.addChild(matchesFoundText);
+        Ticker.init();
+        Ticker.addListener(window);
+        Ticker.setPaused(false);
+        setPlacementArray(numberOfTiles);
+        for(var i=0;i<numberOfTiles;i++){
+          var placement = getRandomPlacement(placementArray);
+          var pairIndex = Math.floor(i/2);
+          text = flashcards[pairIndex][i%2];
+          var textTile = drawTextTile(text, pairIndex); 
+          textTile.x = (tileWidth+margin) * (placement%columns) + globalPadding;
+          textTile.y = (tileHeight+margin) * Math.floor(placement/columns) + globalPadding;
+          stage.addChild(textTile);
+          background = new Shape();
+          background.x = textTile.x-padding;
+          background.y = textTile.y-padding;
+          background.graphics.setStrokeStyle(border).beginStroke("#000").beginFill ('#eee').drawRect(0, 0, tileWidth, tileHeight);
+          textTiles.push(background);
+          stage.addChildAt(background);
+          background.text = textTile;
+          background.onPress = handleOnPress;
+          stage.update();
+        };
+      }
+      function drawTextTile(text, pairIndex) {
+        textTile = new Text(text, "20px Monospace", "#000");
+        textTile.pairIndex = pairIndex;
+        textTile.textBaseline = "top";
+        return textTile;
+      }
+      function randomColor(){
+        var color = Math.floor(Math.random()*255);
+        var color2 = Math.floor(Math.random()*255);
+        var color3 = Math.floor(Math.random()*255);
+        return Graphics.getRGB(color, color2, color3)
+      }
+      function setPlacementArray(numberOfTiles){
+        for(var i = 0;i< numberOfTiles;i++){
+          placementArray.push(i);
+        }
+      }
+      function getRandomPlacement(placementArray){
+        randomNumber = Math.floor(Math.random()*placementArray.length);
+        return placementArray.splice(randomNumber, 1)[0];
+      }
+      function handleOnPress(event){
+        var tile = event.target;
+        if(!!tileClicked === false || tileClicked === tile){
+          tileClicked = tile;
+        }else{
+          tileClicked.graphics.beginFill('#eee').drawRect(0, 0, tileWidth, tileHeight);
+          tile.graphics.beginFill('#aae').drawRect(0, 0, tileWidth, tileHeight);
+          if(tileClicked.text.pairIndex === tile.text.pairIndex && tileClicked.id != tile.id){
+            tileClicked.visible = false;
+            tile.visible = false;
+            matchesFound++;
+            matchesFoundText.text = matchesFound+"/"+totalMatchesPossible;
+            if (matchesFound===totalMatchesPossible){
+              gameOver(true);
+            }
+          }
+          tileClicked = tile;
+        }
+        stage.update(); 
+      }
+      function tick() {
+        secondsLeft = Math.floor((timeAllowable-Ticker.getTime()/1000));
+        txt.text = secondsLeft;
+        if (secondsLeft <= 0){
+          gameOver(false);
+        }
+        stage.update();
+      }
+      function gameOver(win){
+        Ticker.setPaused(true);
+        var replayParagraph = document.getElementById("replay");
+        replayParagraph.innerHTML = "<a href='#' onClick='history.go(0);'>Play Again?</a>";
+        for(var i=0;i<textTiles.length;i++){
+          textTiles[i].onPress = null;
+        }
+        if (win === true){
+          matchesFoundText.text = "You win!"
+        }else{
+          txt.text = secondsLeft + "... Game Over";
+        }
+      }
+      function replay(){
+        init();
+      }
+    </script>
+</head>
+<body onload="init()">
+  <header id="header">
+    <p id="replay"></p>
+  </header>
+  <canvas id="myCanvas" width="960" height="400"></canvas>
+</body>
+</html>

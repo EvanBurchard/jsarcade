@@ -1,0 +1,24 @@
+#canvas{
+  position:absolute;
+  width:600px;
+  height:300px;
+  z-index:-1;
+}
+#minimap{
+  border:1px solid black;
+  position:absolute;
+  top:350px;
+  width:300px;
+  height:300px;
+}
+#screenshot-wrapper{
+  position:absolute;
+  left:700px;
+  border:1px solid black;
+}
+#camera{
+  width:100px;
+  position:absolute; 
+  left:505px;
+  top:180px;
+}

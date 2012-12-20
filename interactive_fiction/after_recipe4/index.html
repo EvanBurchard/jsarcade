@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Interactive Fiction</title>
+    <link href="main.css" rel="stylesheet" />
+</head>
+
+<body>
+<div id="player_inventory">
+  <span class="item-container"><h3>Inventory:</h3>
+    <div class="inventory-box empty"></div>
+    <div class="inventory-box empty"></div>
+    <div class="inventory-box empty"></div>
+  </span>
+</div>
+<div id="impress">
+    <div id="slide1" class="step slide">
+      <div class="slide-text">
+        <p>There's a time machine over there.  Flip the switch?</p>
+        <p><a href='#slide2'>FLIP</a> it.</p>
+        <p><a href='#slide3'>WAIT</a> for your dad, who is a scientist, to come home</p>
+        <div class="event-text"></div>
+     </div>
+     <div class="menu item-container"><div class="inventory-box"><img src="bat.png" alt="bat" class="item" id="bat"></div></div>
+    </div>
+    <div id="slide2" class="step slide" data-x="1500">
+      <div class="slide-text">
+        <p>Woah.  A dinosaur.  I wonder if you can hit it with something...</p>
+        <div class="event-text"></div>
+      </div>
+      <div class="menu"><div class="inventory-box"><img src="dino.png" alt="dino" class="item" id="dino"></div></div>
+    </div>
+    <div id="slide3" class="step slide" data-x="-1500">
+      <div class="slide-text">
+        <p>You hung around for a while, and then your dad came home.</p>
+        <p>Then he helped you with your homework.</p>
+        <p>It was kind of fun, but not that much fun.</p>
+        <div class="event-text"></div>
+      </div>
+      <div class="menu"><a href="#slide1">START OVER</a></div>
+      </div>
+</div>
+
+<script src="impress.js"></script>
+<script>impress().init();</script>
+<script src="game.js"></script>
+<script src="dragDrop.js"></script>
+
+</body>
+</html>

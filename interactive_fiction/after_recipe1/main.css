@@ -1,0 +1,66 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+b, strong { font-weight: bold }
+i, em { font-style: italic }
+/* Reset ends here */
+body {
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(0, 40, 200)), to(rgb(10, 10, 0)));
+    background:    -webkit-radial-gradient(rgb(0, 40, 200), rgb(10, 10, 0));
+    background:    -moz-radial-gradient(rgb(0, 40, 200), rgb(10, 10, 0));
+    background:    -ms-radial-gradient(rgb(0, 40, 200), rgb(10, 10, 0));
+    background:    -o-radial-gradient(rgb(0, 40, 200), rgb(10, 10, 0));
+    background:    radial-gradient(rgb(0, 40, 200), rgb(10, 10, 0));
+}
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.0;
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    -ms-transition:     opacity 1s;
+    -o-transition:      opacity 1s;
+    transition:         opacity 1s;
+}
+.impress-enabled .step.active { opacity: 1 }
+.slide {
+    display: block;
+    width: 700px;
+    height: 600px;
+    padding: 40px 60px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, .3);
+    color: rgb(52, 52, 52);
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 30px;
+}

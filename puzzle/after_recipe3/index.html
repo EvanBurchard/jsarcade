@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe: Drawing a square</title>
+    <script src="easel.js"></script>
+    <script type="text/javascript">
+      var canvas;
+      var stage;
+      var squareSide = 70;
+      var squareOutline = 5;
+      var max_rgb_color_value = 255;
+      var gray = Graphics.getRGB(20, 20, 20);
+      var placementArray = []; 
+      
+      function init() {
+        var rows = 5;
+        var columns = 6;
+        var squarePadding = 10;
+        canvas = document.getElementById('myCanvas');
+        stage = new Stage(canvas);
+
+        var numberOfTiles = rows*columns;
+        setPlacementArray(numberOfTiles);
+        for(var i=0;i<rows*columns;i++){
+          var placement = getRandomPlacement(placementArray);
+          if (i % 2 === 0){
+            var color = randomColor();
+          }
+          var square = drawSquare(color);
+          square.x = (squareSide+squarePadding) * (placement % columns);
+          square.y = (squareSide+squarePadding) * Math.floor(placement / columns);
+          stage.addChild(square);
+          stage.update();
+        };
+      }
+      function drawSquare(color) {
+        var shape = new Shape();
+        var graphics = shape.graphics;
+        graphics.setStrokeStyle(squareOutline);
+        graphics.beginStroke(gray);
+        graphics.beginFill(color);
+        graphics.rect(squareOutline, squareOutline, squareSide, squareSide);
+        return shape;
+      }
+      function randomColor(){
+        var color = Math.floor(Math.random()*255);
+        var color2 = Math.floor(Math.random()*255);
+        var color3 = Math.floor(Math.random()*255);
+        return Graphics.getRGB(color, color2, color3)
+      }
+      function setPlacementArray(numberOfTiles){
+        for(var i = 0;i< numberOfTiles;i++){
+          placementArray.push(i);
+        }
+      }
+      function getRandomPlacement(placementArray){
+        randomNumber = Math.floor(Math.random()*placementArray.length);
+        return placementArray.splice(randomNumber, 1)[0];
+      }
+    </script>
+</head>
+<body onload="init()">
+  <canvas id="myCanvas" width="960" height="400"></canvas>
+</body>
+</html>

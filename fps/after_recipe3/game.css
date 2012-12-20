@@ -1,0 +1,13 @@
+#canvas{
+  position:absolute;
+  width:600px;
+  height:300px;
+  z-index:-1;
+}
+#minimap{
+  border:1px solid black;
+  position:absolute;
+  top:350px;
+  width:300px;
+  height:300px;
+}
