@@ -5,9 +5,11 @@ if(jQuery){
     answers.each(function(i) {
       answerString = answerString + answers[i].value;
     });
-    $(":checked").each(function(i) {
-      var answerString = answerString + answers[i].value;
-    });
+    //The 3 following lines with comments (preceded by //) are not necessary
+    //See errata for chapter 1 at: github.com/EvanBurchard/jsarcade/blob/errata/chapter1
+    //$(":checked").each(function(i) {
+      //var answerString = answerString + answers[i].value;
+    //});
     checkIfCorrect(answerString);
   };
   var checkIfCorrect = function(theString){
