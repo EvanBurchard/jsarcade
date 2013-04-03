@@ -24,15 +24,12 @@ if(jQuery){
     $("#question1").show();
 }
 
-
 There is no need for the following code:  
-
 $(":checked").each(function(i) { 
     var answerString = answerString + answers[i].value;
 });
 
-Listing 1.14 should read as the following:
-
+Listing 1.14 should read as follows:
 if(jQuery){
     var checkAnswers = function(){ 
         var answerString = ""; 
