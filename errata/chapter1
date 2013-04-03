@@ -1,7 +1,6 @@
 Listing 1.14
 
 This code is given:
-
 if(jQuery){
     var checkAnswers = function(){ 
         var answerString = ""; 
